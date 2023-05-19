@@ -11,8 +11,10 @@ void setup(){
 }
 
 void draw(){
-  background(0,200,0);
+  background(0,150,50);
+  
   drawJoey(joe);
+  rotate((float)joe.move(goal));
   /*
   if (keyPressed){
     if(key == CODED){
@@ -29,7 +31,6 @@ void draw(){
   }
   }
   */
-  joe.move(goal);
 }
 
 void drawJoey(Joey joe){
@@ -41,8 +42,10 @@ void drawJoey(Joey joe){
 }
 
 void mouseClicked(){
+  if(mouseButton == RIGHT){
  goal.x=mouseX;
  goal.y=mouseY;
+  }
 
 }
 /*
