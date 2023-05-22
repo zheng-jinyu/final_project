@@ -6,26 +6,38 @@ PVector goal = new PVector(0,0);
 int rateTick = 0;
 int childrenSpawnRate = 60;
 ArrayList<Children> children = new ArrayList<Children>();
+Weapon weapon;
+boolean dead = false;
 
 void setup(){
-  size(1920,1080);
+  size(1080,810);
   background(0,200,0);
   joe = new Joey();
+  textSize(60);
+  weapon = new Weapon(); 
 }
 
 void draw(){
+  if(dead)return;
   background(0,150,50);
   rateTick++;
   
   drawJoey(joe);
-  joe.move(goal);
+  joe.move(new PVector(mouseX,mouseY));
   
   if(rateTick%childrenSpawnRate==0){
     children.add(new Children());
     
   }
-  
+  weapon.drawWeapon(joe);
   drawChildren();
+  
+  if(joe.HP<=0){
+    death();
+  }
+  
+  text("HP: "+joe.HP,700,60);
+  
   
 
 }
@@ -36,6 +48,7 @@ void drawChildren(){
     rect(children.get(i).pos.x,children.get(i).pos.y,30,30);
     fill(0,0,0);
     children.get(i).move(joe.pos);
+    children.get(i).checkTouch(joe);
   }
 
 }
@@ -48,12 +61,17 @@ void drawJoey(Joey joe){
 
 
 }
-
+void death(){
+  PImage img;
+  img = loadImage("lost.png");
+  image(img,0,0);
+  dead = true;
+}
 void mouseClicked(){
-  if(mouseButton == RIGHT){
+  //if(mouseButton == RIGHT){
  goal.x=mouseX;
  goal.y=mouseY;
-  }
+  //}
 
 }
 /*

@@ -4,7 +4,7 @@ public class Joey{
   PVector pos;
   int sped = 5;
   public Joey(){
-    HP = 1000;
+    HP = 1;
     money = 69;
     pos = new PVector(960,540);
   }
