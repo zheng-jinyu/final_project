@@ -3,6 +3,9 @@ Joey joe;
 PVector direction = new PVector(0,0);
 boolean moving = false;
 PVector goal = new PVector(0,0);  
+int rateTick = 0;
+int childrenSpawnRate = 60;
+ArrayList<Children> children = new ArrayList<Children>();
 
 void setup(){
   size(1920,1080);
@@ -12,26 +15,31 @@ void setup(){
 
 void draw(){
   background(0,150,50);
+  rateTick++;
   
   drawJoey(joe);
-  rotate((float)joe.move(goal));
-  /*
-  if (keyPressed){
-    if(key == CODED){
-      switch(keyCode){
-        
-        case UP:{direction = (new PVector(0,-10));moving=true;break;}
-        case DOWN:{direction = (new PVector(0,10));moving=true;break;}
-        case LEFT:{direction = (new PVector(-10,0));moving=true;break;}
-        case RIGHT:{direction = (new PVector(10,0));moving=true;break;}
-        
-        
-      }
-      
+  joe.move(goal);
+  
+  if(rateTick%childrenSpawnRate==0){
+    children.add(new Children());
+    
   }
-  }
-  */
+  
+  drawChildren();
+  
+
 }
+
+void drawChildren(){
+  for(int i = 0; i<children.size();i++){
+    fill(100,200,150);
+    rect(children.get(i).pos.x,children.get(i).pos.y,30,30);
+    fill(0,0,0);
+    children.get(i).move(joe.pos);
+  }
+
+}
+
 
 void drawJoey(Joey joe){
   fill(255,0,0);

@@ -8,19 +8,19 @@ public class Children{
 
     switch((int)Math.random()*2){
 
-        case 0: pos = new PVector(Math.random()*width, 0);
+        case 0: {pos = new PVector((float)Math.random()*width, 0.0);break;}
 
 
-        case 1: pos = new PVector(Math.random()*width, height);
+        case 1: {pos = new PVector((float)Math.random()*width, height);break;}
 
     }
 
 
   }
-
-  public void move(PVector joe.pos){
-    float xDist = joe.pos.x-pos.x;
-    float yDist = joe.pos.y-pos.y;
+  
+  public void move(PVector joe){
+    float xDist = joe.x-pos.x;
+    float yDist = joe.y-pos.y;
     
     double hyp = Math.hypot((double)Math.abs(xDist),(double)Math.abs(yDist));
     
@@ -29,7 +29,7 @@ public class Children{
     double actualX = xDist/ratio;
     double actualY = yDist/ratio;
     
-    if(Math.abs(pos.x-joe.pos.x)>2&&Math.abs(pos.y-joe.pos.y)>2)pos.add(new PVector((float)actualX,(float)actualY));
+    if(Math.abs(pos.x-joe.x)>2&&Math.abs(pos.y-joe.y)>2)pos.add(new PVector((float)actualX,(float)actualY));
     
     
   }
