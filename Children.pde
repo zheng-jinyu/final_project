@@ -1,6 +1,6 @@
 public class Children{
   int dmg;
-  int sped = 2;
+  int sped = 3;
   PVector pos;
 
   public Children() {
@@ -17,10 +17,12 @@ public class Children{
 
 
   }
-  public void checkTouch(Joey joe){
+  public int checkTouch(Joey joe){
     if(Math.abs(joe.pos.x-pos.x)<=10&&Math.abs(joe.pos.y-pos.y)<=10){
       joe.HP-=dmg;
+      return dmg;
     }
+    return 0;
   
   }
   

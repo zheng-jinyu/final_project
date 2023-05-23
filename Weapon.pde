@@ -24,9 +24,11 @@ public class Weapon{
   };
   
   public void drawWeapon(Joey joe){
+    /*
     switch(currentWeapon){
-      
+      case 0:
     }
+    */
     rect(joe.pos.x+10,joe.pos.y+10,10,10);
   }
   

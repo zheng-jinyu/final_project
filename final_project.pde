@@ -9,6 +9,13 @@ ArrayList<Children> children = new ArrayList<Children>();
 Weapon weapon;
 boolean dead = false;
 
+//GAME STATS
+int childrenMurdered;
+int totalHealing;
+int totalDmgTaken;
+
+
+
 void setup(){
   size(1080,810);
   background(0,200,0);
@@ -34,6 +41,7 @@ void draw(){
   
   if(joe.HP<=0){
     death();
+    joe.HP=0;
   }
   
   text("HP: "+joe.HP,700,60);
@@ -48,7 +56,7 @@ void drawChildren(){
     rect(children.get(i).pos.x,children.get(i).pos.y,30,30);
     fill(0,0,0);
     children.get(i).move(joe.pos);
-    children.get(i).checkTouch(joe);
+    totalDmgTaken+=children.get(i).checkTouch(joe);
   }
 
 }
