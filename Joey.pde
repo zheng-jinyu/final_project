@@ -27,4 +27,18 @@ public class Joey{
     
   }
   
+  public void keyPressed() {
+    if (key == "a") {
+      switch(currentWeapon){
+        case fist: {}
+        case bat:
+        case katana:
+        case chainsaw:
+        case AK47:
+
+      }
+
+      
+    }
+  }
 }
