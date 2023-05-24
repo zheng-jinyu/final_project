@@ -10,7 +10,7 @@ public class Weapon{
   */
   
   public Weapon(){
-    currentWeapon = 0;
+    currentWeapon = 3;
   }
   
   float[] attackSpd = 
