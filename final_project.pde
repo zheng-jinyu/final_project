@@ -71,9 +71,14 @@ void attack(Weapon weapon){
 
 void drawChildren(){
   for(int i = 0; i<children.size();i++){
+    PImage child = loadImage("jinyu.png");
+    image(child,children.get(i).pos.x,children.get(i).pos.y);
+    /*
     fill(100,200,150);
     rect(children.get(i).pos.x,children.get(i).pos.y,30,30);
     fill(0,0,0);
+    */
+    
     children.get(i).move(joe.pos);
     totalDmgTaken+=children.get(i).checkTouch(joe);
   }
@@ -96,7 +101,7 @@ void death(){
   textSize(60);
   text("YOU DIED",width/2-100,height/2-50);
   textSize(20);
-  text("You murdered "+childrenMurdered+" children.",width/2-100,height/2);
+  text("You defeated "+childrenMurdered+" jinyus.",width/2-100,height/2);
   text("You healed "+totalHealing+" HP.",width/2-100,height/2+50);
   text("You took "+totalDmgTaken+" DMG.",width/2-100,height/2+100);
   
