@@ -102,6 +102,7 @@ void death(){
   text("YOU DIED",width/2-100,height/2-50);
   textSize(20);
   text("You defeated "+childrenMurdered+" jinyus.",width/2-100,height/2);
+
   text("You healed "+totalHealing+" HP.",width/2-100,height/2+50);
   text("You took "+totalDmgTaken+" DMG.",width/2-100,height/2+100);
   
