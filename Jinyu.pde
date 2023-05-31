@@ -25,7 +25,9 @@ public class Jinyu{
     return 0;
   
   }
-  
+  public int checkWeaponTouch(Weapon weapon) {
+    if(pos.x)
+  }
   
   
   public void move(PVector joe){
