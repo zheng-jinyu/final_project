@@ -5,7 +5,7 @@ boolean moving = false;
 PVector goal = new PVector(0,0);  
 int rateTick = 0;
 int childrenSpawnRate = 60;
-ArrayList<Children> children = new ArrayList<Children>();
+ArrayList<Jinyu> children = new ArrayList<Jinyu>();
 Weapon weapon;
 boolean dead = false;
 int ticksSinceLastAttack;
@@ -36,7 +36,7 @@ void draw(){
   joe.move(new PVector(mouseX,mouseY));
   
   if(rateTick%childrenSpawnRate==0){
-    children.add(new Children());
+    children.add(new Jinyu());
     
   }
   weapon.drawWeapon(joe);
@@ -71,9 +71,14 @@ void attack(Weapon weapon){
 
 void drawChildren(){
   for(int i = 0; i<children.size();i++){
+    PImage child = loadImage("jinyu.png");
+    image(child,children.get(i).pos.x,children.get(i).pos.y);
+    /*
     fill(100,200,150);
     rect(children.get(i).pos.x,children.get(i).pos.y,30,30);
     fill(0,0,0);
+    */
+    
     children.get(i).move(joe.pos);
     totalDmgTaken+=children.get(i).checkTouch(joe);
   }
@@ -96,7 +101,8 @@ void death(){
   textSize(60);
   text("YOU DIED",width/2-100,height/2-50);
   textSize(20);
-  text("You defeated "+childrenMurdered+" Jinyus.",width/2-100,height/2);
+  text("You defeated "+childrenMurdered+" jinyus.",width/2-100,height/2);
+
   text("You healed "+totalHealing+" HP.",width/2-100,height/2+50);
   text("You took "+totalDmgTaken+" DMG.",width/2-100,height/2+100);
   
