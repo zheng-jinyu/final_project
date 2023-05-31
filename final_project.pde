@@ -5,7 +5,7 @@ boolean moving = false;
 PVector goal = new PVector(0,0);  
 int rateTick = 0;
 int childrenSpawnRate = 60;
-ArrayList<Children> children = new ArrayList<Children>();
+ArrayList<Jinyu> children = new ArrayList<Jinyu>();
 Weapon weapon;
 boolean dead = false;
 int ticksSinceLastAttack;
@@ -36,7 +36,7 @@ void draw(){
   joe.move(new PVector(mouseX,mouseY));
   
   if(rateTick%childrenSpawnRate==0){
-    children.add(new Children());
+    children.add(new Jinyu());
     
   }
   weapon.drawWeapon(joe);
