@@ -68,6 +68,12 @@ void attack(Weapon weapon){
 
 }
 
+void market() {
+  if(inShop && keyPressed == "F") {
+    
+  }
+
+}
 
 void drawChildren(){
   for(int i = 0; i<children.size();i++){
