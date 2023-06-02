@@ -26,5 +26,12 @@ public class Joey{
     return Math.atan(actualY/actualX);
     
   }
-  
+  public void moneyMan() {
+    int i = 0;
+    if(int i != childrenMurdered) {
+      money += 10;
+      i++;
+    }
+
+  }
 }
