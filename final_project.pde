@@ -63,11 +63,6 @@ void draw(){
 
 }
 
-void attack(Weapon weapon){
-  
-
-}
-
 void market() {
   if(inShop && keyPressed == "F") {
     
@@ -93,6 +88,7 @@ void drawChildren(){
 
 
 void drawJoey(Joey joe){
+  Pimage joe = loadImage("m1.png");
   fill(255,0,0);
   rect(joe.pos.x,joe.pos.y,30,30);
   fill(0,0,0);
