@@ -4,7 +4,7 @@ PVector direction = new PVector(0,0);
 boolean moving = false;
 PVector goal = new PVector(0,0);  
 int rateTick = 0;
-int childrenSpawnRate = 60;
+int childrenSpawnRate = 10;
 ArrayList<Jinyu> jinyus = new ArrayList<Jinyu>();
 Weapon weapon;
 boolean dead = false;
