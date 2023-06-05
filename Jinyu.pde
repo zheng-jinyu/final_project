@@ -25,6 +25,11 @@ public class Jinyu{
     return 0;
   
   }
+<<<<<<< HEAD
+  public int checkWeaponTouch(Weapon weapon) {
+    if(pos.x)
+  }
+=======
   
   public boolean checkDeath(PVector atkPos){
     return (
@@ -33,6 +38,7 @@ public class Jinyu{
     );
   }
   
+>>>>>>> e3200c4dba2201e3fbf888374346eb4e6349671f
   
   
   public void move(PVector joe){
