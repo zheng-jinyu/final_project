@@ -28,7 +28,7 @@ public class Joey{
   }
   public void moneyMan() {
     int i = 0;
-    if(int i != childrenMurdered) {
+    while(int i < childrenMurdered) {
       money += 10;
       i++;
     }
