@@ -9,7 +9,7 @@ public class Joey{
     pos = new PVector(960,540);
   }
   
-  public double move(PVector dir){
+  public PVector move(PVector dir){
     float xDist = dir.x-pos.x;
     float yDist = dir.y-pos.y;
     
@@ -23,7 +23,7 @@ public class Joey{
     if(Math.abs(pos.x-dir.x)>2&&Math.abs(pos.y-dir.y)>2)pos.add(new PVector((float)actualX,(float)actualY));
     
     
-    return Math.atan(actualY/actualX);
+    return new PVector((float)actualX,(float)actualY);
     
   }
   public void moneyMan() {

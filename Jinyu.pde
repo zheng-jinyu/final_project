@@ -25,9 +25,20 @@ public class Jinyu{
     return 0;
   
   }
+<<<<<<< HEAD
   public int checkWeaponTouch(Weapon weapon) {
     if(pos.x)
   }
+=======
+  
+  public boolean checkDeath(PVector atkPos){
+    return (
+      Math.sqrt(Math.abs(pos.x-atkPos.x)*Math.abs(pos.x-atkPos.x)+Math.abs(pos.y-atkPos.y)*Math.abs(pos.y-atkPos.y))<=20
+
+    );
+  }
+  
+>>>>>>> e3200c4dba2201e3fbf888374346eb4e6349671f
   
   
   public void move(PVector joe){
@@ -42,6 +53,7 @@ public class Jinyu{
     double actualY = yDist/ratio;
     
     if(Math.abs(pos.x-joe.x)>2&&Math.abs(pos.y-joe.y)>2)pos.add(new PVector((float)actualX,(float)actualY));
+   
     
     
   }
