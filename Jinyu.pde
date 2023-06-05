@@ -26,6 +26,13 @@ public class Jinyu{
   
   }
   
+  public boolean checkDeath(PVector atkPos){
+    return (
+      Math.sqrt(Math.abs(pos.x-atkPos.x)*Math.abs(pos.x-atkPos.x)+Math.abs(pos.y-atkPos.y)*Math.abs(pos.y-atkPos.y))<=20
+
+    );
+  }
+  
   
   
   public void move(PVector joe){
@@ -40,6 +47,7 @@ public class Jinyu{
     double actualY = yDist/ratio;
     
     if(Math.abs(pos.x-joe.x)>2&&Math.abs(pos.y-joe.y)>2)pos.add(new PVector((float)actualX,(float)actualY));
+   
     
     
   }

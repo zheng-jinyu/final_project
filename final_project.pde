@@ -5,14 +5,15 @@ boolean moving = false;
 PVector goal = new PVector(0,0);  
 int rateTick = 0;
 int childrenSpawnRate = 60;
-ArrayList<Jinyu> children = new ArrayList<Jinyu>();
+ArrayList<Jinyu> jinyus = new ArrayList<Jinyu>();
 Weapon weapon;
 boolean dead = false;
 int ticksSinceLastAttack;
+PVector attackPosition;
 
 
 //GAME STATS
-int childrenMurdered;
+int jinyusMurdered;
 int totalHealing;
 int totalDmgTaken;
 
@@ -22,6 +23,7 @@ void setup(){
   size(1080,810);
   background(0,200,0);
   joe = new Joey();
+  attackPosition = new PVector(-100,-100);
   ticksSinceLastAttack = 0;
   
   weapon = new Weapon(); 
@@ -33,13 +35,13 @@ void draw(){
   rateTick++;
   
   drawJoey(joe);
-  joe.move(new PVector(mouseX,mouseY));
-  
+  direction = joe.move(new PVector(mouseX,mouseY));
   if(rateTick%childrenSpawnRate==0){
-    children.add(new Jinyu());
+    jinyus.add(new Jinyu());
     
   }
   weapon.drawWeapon(joe);
+  
   drawChildren();
   
   if(joe.HP<=0){
@@ -51,7 +53,8 @@ void draw(){
   ticksSinceLastAttack++;
   if(keyPressed){
     if (key == 'a'){
-      print("a");
+      print(weapon.attackSpd[weapon.currentWeapon]*frameRate);
+      
       if(ticksSinceLastAttack>=weapon.attackSpd[weapon.currentWeapon]*frameRate){
         attack(weapon);
         ticksSinceLastAttack=0;
@@ -64,25 +67,45 @@ void draw(){
 }
 
 void attack(Weapon weapon){
+  PVector newDir = new PVector(direction.x*6,direction.y*6);
   
+  
+  PVector centre = new PVector(newDir.x+joe.pos.x,newDir.y+joe.pos.y);
+  
+  fill(255,0,0);
+  rect(joe.pos.x,joe.pos.y,30,30);
+  fill(0,0,0);
+  checkJinyu(centre);
 
 }
 
 
 void drawChildren(){
-  for(int i = 0; i<children.size();i++){
+  for(int i = 0; i<jinyus.size();i++){
     PImage child = loadImage("jinyu.png");
-    image(child,children.get(i).pos.x,children.get(i).pos.y);
+    image(child,jinyus.get(i).pos.x,jinyus.get(i).pos.y);
     /*
     fill(100,200,150);
     rect(children.get(i).pos.x,children.get(i).pos.y,30,30);
     fill(0,0,0);
     */
     
-    children.get(i).move(joe.pos);
-    totalDmgTaken+=children.get(i).checkTouch(joe);
+    jinyus.get(i).move(joe.pos);
+    
+    totalDmgTaken+=jinyus.get(i).checkTouch(joe);
+    
   }
 
+}
+
+void checkJinyu(PVector pos){
+  for(int i = 0; i<jinyus.size();i++){
+  
+if(jinyus.get(i).checkDeath(pos)){
+    print("death");
+      jinyus.remove(i);
+    }
+  }
 }
 
 
@@ -93,6 +116,9 @@ void drawJoey(Joey joe){
 
 
 }
+
+
+
 void death(){
   PImage img;
   img = loadImage("lost.png");
@@ -101,7 +127,7 @@ void death(){
   textSize(60);
   text("YOU DIED",width/2-100,height/2-50);
   textSize(20);
-  text("You defeated "+childrenMurdered+" jinyus.",width/2-100,height/2);
+  text("You defeated "+jinyusMurdered+" jinyus.",width/2-100,height/2);
 
   text("You healed "+totalHealing+" HP.",width/2-100,height/2+50);
   text("You took "+totalDmgTaken+" DMG.",width/2-100,height/2+100);
