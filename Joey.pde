@@ -26,12 +26,5 @@ public class Joey{
     return new PVector((float)actualX,(float)actualY);
     
   }
-  public void moneyMan() {
-    int i = 0;
-    while(int i < childrenMurdered) {
-      money += 10;
-      i++;
-    }
 
-  }
 }

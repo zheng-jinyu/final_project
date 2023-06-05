@@ -66,12 +66,6 @@ void draw(){
 
 }
 
-<<<<<<< HEAD
-void market() {
-  if(inShop && keyPressed == "F") {
-    
-  }
-=======
 void attack(Weapon weapon){
   PVector newDir = new PVector(direction.x*6,direction.y*6);
   
@@ -82,7 +76,7 @@ void attack(Weapon weapon){
   rect(joe.pos.x,joe.pos.y,30,30);
   fill(0,0,0);
   checkJinyu(centre);
->>>>>>> e3200c4dba2201e3fbf888374346eb4e6349671f
+
 
 }
 
@@ -116,7 +110,6 @@ if(jinyus.get(i).checkDeath(pos)){
 
 
 void drawJoey(Joey joe){
-  Pimage joe = loadImage("m1.png");
   fill(255,0,0);
   rect(joe.pos.x,joe.pos.y,30,30);
   fill(0,0,0);
