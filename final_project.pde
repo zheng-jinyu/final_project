@@ -104,15 +104,21 @@ void checkJinyu(PVector pos){
 if(jinyus.get(i).checkDeath(pos)){
     print("death");
       jinyus.remove(i);
+      joe.money += 10;
+      joe.HP += 5;
+      totalHealing+=5;
+      jinyusMurdered+=1;
     }
   }
 }
 
 
 void drawJoey(Joey joe){
-  fill(255,0,0);
-  rect(joe.pos.x,joe.pos.y,30,30);
-  fill(0,0,0);
+   PImage joey = loadImage("da_wok.png");
+   image(joey,joe.pos.x-45,joe.pos.y-40);
+  //fill(255,0,0);
+  //rect(joe.pos.x,joe.pos.y,30,30);
+  //fill(0,0,0);
 
 
 }
