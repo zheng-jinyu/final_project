@@ -24,12 +24,20 @@ public class Weapon{
   };
   
   public void drawWeapon(Joey joe){
-    /*
+    
     switch(currentWeapon){
-      case 0:
+      case 0:   PImage fist = loadImage("first.png");
+                image(fist,joe.pos.x+10,joe.pos.y+10); break;
+      case 1:   PImage bat = loadImage("bat.png");
+                image(bat,joe.pos.x+10,joe.pos.y+10); break;
+      case 2:   PImage katana = loadImage("sword.png");
+                image(katana,joe.pos.x+10,joe.pos.y+10); break;
+      case 3:   PImage chainsaw = loadImage("chainsaw.png"); 
+                image(chainsaw,joe.pos.x+10,joe.pos.y+10); break;
+      case 4:   PImage ak47 = loadImage("glickie.png");
+                image(ak47,joe.pos.x+10,joe.pos.y+10); break;
     }
-    */
-    rect(joe.pos.x+10,joe.pos.y+10,10,10);
+
   }
   
   
