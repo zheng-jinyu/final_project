@@ -5,12 +5,10 @@ public class Weapon{
   1 = bat
   2 = katana
   3 = chainsaw
-  4 = AK47
-  5 = rocket Launcher??
   */
   
   public Weapon(){
-    currentWeapon = 3;
+    currentWeapon = 0;
   }
   
   float[] attackSpd = 
@@ -19,14 +17,22 @@ public class Weapon{
    3,//bat
    2,//katana
    0,//chainsaw
-   0.1//AK47
+  
+  };
+  
+   float[] weaponRadius = 
+  {
+   90,//fist
+   200,//bat
+   200,//katana
+   100,//chainsaw
   
   };
   
   public void drawWeapon(Joey joe){
     
     switch(currentWeapon){
-      case 0:   PImage fist = loadImage("first.png");
+      case 0:   PImage fist = loadImage("fist.png");
                 image(fist,joe.pos.x+10,joe.pos.y+10); break;
       case 1:   PImage bat = loadImage("bat.png");
                 image(bat,joe.pos.x+10,joe.pos.y+10); break;
@@ -34,8 +40,6 @@ public class Weapon{
                 image(katana,joe.pos.x+10,joe.pos.y+10); break;
       case 3:   PImage chainsaw = loadImage("chainsaw.png"); 
                 image(chainsaw,joe.pos.x+10,joe.pos.y+10); break;
-      case 4:   PImage ak47 = loadImage("glickie.png");
-                image(ak47,joe.pos.x+10,joe.pos.y+10); break;
     }
 
   }

@@ -4,7 +4,7 @@ PVector direction = new PVector(0,0);
 boolean moving = false;
 PVector goal = new PVector(0,0);  
 int rateTick = 0;
-int childrenSpawnRate = 10;
+float childrenSpawnRate = 10;
 ArrayList<Jinyu> jinyus = new ArrayList<Jinyu>();
 Weapon weapon;
 boolean dead = false;
@@ -36,7 +36,9 @@ void draw(){
   
   drawJoey(joe);
   direction = joe.move(new PVector(mouseX,mouseY));
-  if(rateTick%childrenSpawnRate==0){
+  if((int)childrenSpawnRate ==0){
+    jinyus.add(new Jinyu());
+  }else if(rateTick%(int)childrenSpawnRate==0){
     jinyus.add(new Jinyu());
     
   }
@@ -53,7 +55,6 @@ void draw(){
   ticksSinceLastAttack++;
   if(keyPressed){
     if (key == 'a'){
-      print(weapon.attackSpd[weapon.currentWeapon]*frameRate);
       
       if(ticksSinceLastAttack>=weapon.attackSpd[weapon.currentWeapon]*frameRate){
         attack(weapon);
@@ -61,11 +62,30 @@ void draw(){
       }
     }
   }
+  updateGame();
   
+  if(childrenSpawnRate-0.001 > 0){
+    childrenSpawnRate-= 0.001;
+  }
   
 
 }
+void updateGame(){
+  
+  switch(jinyusMurdered/50){
+    case 0:weapon.currentWeapon = 0;break;
+    
+    case 1:weapon.currentWeapon = 1;break;
+    
+    case 2:weapon.currentWeapon = 2;break;
+    
+    case 3:weapon.currentWeapon = 3;break;
+    
+    default:break;
+  
+  }
 
+}
 void attack(Weapon weapon){
   PVector newDir = new PVector(direction.x*6,direction.y*6);
   
@@ -101,7 +121,7 @@ void drawChildren(){
 void checkJinyu(PVector pos){
   for(int i = 0; i<jinyus.size();i++){
   
-if(jinyus.get(i).checkDeath(pos)){
+if(jinyus.get(i).checkDeath(pos,(int)weapon.weaponRadius[weapon.currentWeapon])){
     print("death");
       jinyus.remove(i);
       joe.money += 10;

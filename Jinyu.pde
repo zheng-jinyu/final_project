@@ -27,9 +27,9 @@ public int checkTouch(Joey joe){
   }
 
   
-public boolean checkDeath(PVector atkPos){
+public boolean checkDeath(PVector atkPos,int radius){
     return (
-      Math.sqrt(Math.abs(pos.x-atkPos.x)*Math.abs(pos.x-atkPos.x)+Math.abs(pos.y-atkPos.y)*Math.abs(pos.y-atkPos.y))<=20
+      Math.sqrt(Math.abs(pos.x-atkPos.x)*Math.abs(pos.x-atkPos.x)+Math.abs(pos.y-atkPos.y)*Math.abs(pos.y-atkPos.y))<=radius
 
     );
   }
